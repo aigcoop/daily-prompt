@@ -12,11 +12,14 @@ for p in pages:
     top = int((h - side) * 0.25)
     im = im.crop(((w - side) // 2, top, (w - side) // 2 + side, top + side)).resize((240, 240))
     im.save('p/%s/thumb.jpg' % p['no'], quality=82, optimize=True)
-    cards.append('''    <li><a class="card" href="p/%s/">
-      <img src="p/%s/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">%d번 · %s</span><span class="ttl">%s</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>''' % (p['no'], p['no'], int(p['no']), html.escape(p['kind']), html.escape(p['title'])))
+    cards.append('''    <li class="card">
+      <a class="open" href="p/%s/">
+        <img src="p/%s/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">%d번 · %s</span><span class="ttl">%s</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/%s/" data-title="%s" data-label="%d번만 공유">%d번만 공유</button>
+    </li>''' % (p['no'], p['no'], int(p['no']), html.escape(p['kind']), html.escape(p['title']),
+               p['no'], html.escape(p['title'] + ' | AI로사쌤 오늘의 프롬프트', quote=True), int(p['no']), int(p['no'])))
 
 page = '''<!DOCTYPE html>
 <html lang="ko">
@@ -33,19 +36,19 @@ page = '''<!DOCTYPE html>
 /* 배치: 휴대폰 한 줄 세로 흐름 — 제목 → 주제 단추 목록(작은 사진 + 번호 + 제목) */
 :root{
   --bg:#eef4f1;--card:#ffffff;--ink:#16302b;--soft:#5b716c;--line:#cfdcd7;
-  --accent:#0c7a66;--mark:#ffe27a;
+  --accent:#0c7a66;--accent-ink:#ffffff;--mark:#ffe27a;
   --display:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --body:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
-    --accent:#3fc4a8;--mark:#6b5a12;color-scheme:dark;
+    --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
-  --accent:#3fc4a8;--mark:#6b5a12;color-scheme:dark;
+  --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -59,27 +62,67 @@ h1{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.3;mar
 h1 em{font-style:normal;background:linear-gradient(transparent 58%%,var(--mark) 58%%)}
 .how{margin:0;color:var(--soft)}
 ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
-.card{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);
-  border-radius:14px;padding:10px;color:inherit;text-decoration:none}
-.card img{width:76px;height:76px;border-radius:10px;object-fit:cover;flex:none;display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;
+  display:flex;flex-direction:column;gap:10px}
+.open{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none;border-radius:10px}
+.open img{width:76px;height:76px;border-radius:10px;object-fit:cover;flex:none;display:block}
 .txt{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
 .no{color:var(--accent);font-size:14px}
 .ttl{font-family:var(--display);font-size:19px;line-height:1.35;word-break:keep-all}
-.go{font-size:28px;color:var(--soft);flex:none;padding-right:4px}
-.card:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.card:active{border-color:var(--accent)}
+button{font-family:var(--display);font-size:17px;border-radius:10px;padding:10px 12px;cursor:pointer;width:100%%}
+.share{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.all{background:var(--accent);color:var(--accent-ink);border:0;font-size:19px;padding:14px}
+.open:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#msg{margin:0;min-height:1.6em;text-align:center;color:var(--accent);font-size:15px}
 </style>
 </head>
 <body>
 <main>
   <div class="day"><b>오늘의 프롬프트</b><span>AI로사쌤 · 모음</span></div>
   <h1>매일 하나씩, <em>프롬프트 모음</em></h1>
-  <p class="how">만들고 싶은 주제를 누르면 예시와 프롬프트가 나와요. 지금 %d개가 있어요.</p>
+  <p class="how">주제를 누르면 예시와 프롬프트가 나와요. 지금 %d개가 있어요. <b>"○번만 공유"</b>를 누르면 그 주제 하나만 보이는 링크가 공유돼요.</p>
+  <button type="button" class="all" data-url="https://aigcoop.github.io/daily-prompt/" data-title="오늘의 프롬프트 모음 | AI로사쌤" data-label="모음 전체 공유">모음 전체 공유</button>
+  <p id="msg" role="status" aria-live="polite"></p>
   <ul>
 %s
   </ul>
   <p class="how" style="text-align:center;font-size:14px">출처 · AI로사쌤</p>
 </main>
+<script>
+(function(){
+  var msg=document.getElementById('msg');
+  function copied(btn){
+    var label=btn.getAttribute('data-label');
+    btn.textContent='링크가 복사됐어요';
+    msg.textContent='카카오톡 등 대화창에 붙여넣기 하세요.';
+    setTimeout(function(){btn.textContent=label},2500);
+  }
+  function manual(url){msg.textContent='이 주소를 길게 눌러 복사하세요: '+url}
+  function copy(btn,url){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){copied(btn)}).catch(function(){manual(url)});
+    }else{
+      try{
+        var t=document.createElement('textarea');t.value=url;t.setAttribute('readonly','');
+        t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();
+        var ok=document.execCommand('copy');document.body.removeChild(t);
+        if(ok){copied(btn)}else{manual(url)}
+      }catch(e){manual(url)}
+    }
+  }
+  function share(btn){
+    var url=btn.getAttribute('data-url'),title=btn.getAttribute('data-title');
+    if(navigator.share){
+      navigator.share({title:title,url:url}).catch(function(e){
+        if(e&&e.name==='AbortError'){return}
+        copy(btn,url);
+      });
+    }else{copy(btn,url)}
+  }
+  var bs=document.querySelectorAll('button[data-url]');
+  for(var i=0;i<bs.length;i++){bs[i].addEventListener('click',function(){share(this)})}
+})();
+</script>
 </body>
 </html>
 ''' % (pages[-1]['no'], pages[-1]['photo'], len(pages), '\n'.join(cards))

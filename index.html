@@ -13,19 +13,19 @@
 /* 배치: 휴대폰 한 줄 세로 흐름 — 제목 → 주제 단추 목록(작은 사진 + 번호 + 제목) */
 :root{
   --bg:#eef4f1;--card:#ffffff;--ink:#16302b;--soft:#5b716c;--line:#cfdcd7;
-  --accent:#0c7a66;--mark:#ffe27a;
+  --accent:#0c7a66;--accent-ink:#ffffff;--mark:#ffe27a;
   --display:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --body:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
-    --accent:#3fc4a8;--mark:#6b5a12;color-scheme:dark;
+    --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
-  --accent:#3fc4a8;--mark:#6b5a12;color-scheme:dark;
+  --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -39,100 +39,170 @@ h1{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.3;mar
 h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--mark) 58%)}
 .how{margin:0;color:var(--soft)}
 ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
-.card{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);
-  border-radius:14px;padding:10px;color:inherit;text-decoration:none}
-.card img{width:76px;height:76px;border-radius:10px;object-fit:cover;flex:none;display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;
+  display:flex;flex-direction:column;gap:10px}
+.open{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none;border-radius:10px}
+.open img{width:76px;height:76px;border-radius:10px;object-fit:cover;flex:none;display:block}
 .txt{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
 .no{color:var(--accent);font-size:14px}
 .ttl{font-family:var(--display);font-size:19px;line-height:1.35;word-break:keep-all}
-.go{font-size:28px;color:var(--soft);flex:none;padding-right:4px}
-.card:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.card:active{border-color:var(--accent)}
+button{font-family:var(--display);font-size:17px;border-radius:10px;padding:10px 12px;cursor:pointer;width:100%}
+.share{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.all{background:var(--accent);color:var(--accent-ink);border:0;font-size:19px;padding:14px}
+.open:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#msg{margin:0;min-height:1.6em;text-align:center;color:var(--accent);font-size:15px}
 </style>
 </head>
 <body>
 <main>
   <div class="day"><b>오늘의 프롬프트</b><span>AI로사쌤 · 모음</span></div>
   <h1>매일 하나씩, <em>프롬프트 모음</em></h1>
-  <p class="how">만들고 싶은 주제를 누르면 예시와 프롬프트가 나와요. 지금 15개가 있어요.</p>
+  <p class="how">주제를 누르면 예시와 프롬프트가 나와요. 지금 15개가 있어요. <b>"○번만 공유"</b>를 누르면 그 주제 하나만 보이는 링크가 공유돼요.</p>
+  <button type="button" class="all" data-url="https://aigcoop.github.io/daily-prompt/" data-title="오늘의 프롬프트 모음 | AI로사쌤" data-label="모음 전체 공유">모음 전체 공유</button>
+  <p id="msg" role="status" aria-live="polite"></p>
   <ul>
-    <li><a class="card" href="p/001/">
-      <img src="p/001/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">1번 · 사진</span><span class="ttl">눈 오는 날, 눈사람과 찰칵</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/002/">
-      <img src="p/002/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">2번 · 사진 + 영상</span><span class="ttl">자작나무 숲 눈길 걷기</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/003/">
-      <img src="p/003/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">3번 · 사진 + 영상</span><span class="ttl">오로라 아래 유리 이글루</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/004/">
-      <img src="p/004/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">4번 · 사진 3종</span><span class="ttl">사진관 안 가고 프로필 사진 3종</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/005/">
-      <img src="p/005/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">5번 · 사진 + 영상</span><span class="ttl">하늘에서 쏟아지는 제품 광고</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/006/">
-      <img src="p/006/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">6번 · 사진 + 영상</span><span class="ttl">노을 속 스노보드 점프</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/007/">
-      <img src="p/007/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">7번 · 사진 + 영상</span><span class="ttl">카파도키아 열기구 여행</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/008/">
-      <img src="p/008/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">8번 · 사진 + 영상</span><span class="ttl">얼음을 깨고 나오는 제품 광고</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/009/">
-      <img src="p/009/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">9번 · 사진 + 영상</span><span class="ttl">물속으로 풍덩, 제품 광고</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/010/">
-      <img src="p/010/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">10번 · 사진 + 영상</span><span class="ttl">꽃이 피며 나타나는 제품 광고</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/011/">
-      <img src="p/011/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">11번 · 사진 + 영상</span><span class="ttl">금빛 실크가 걷히는 제품 공개</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/012/">
-      <img src="p/012/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">12번 · 사진 + 영상</span><span class="ttl">미니어처 마을의 거인 제품 광고</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/013/">
-      <img src="p/013/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">13번 · 사진 + 영상</span><span class="ttl">원료가 소용돌이치는 제품 광고</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/014/">
-      <img src="p/014/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">14번 · 사진 + 영상</span><span class="ttl">색종이 펑! 축하 파티</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
-    <li><a class="card" href="p/015/">
-      <img src="p/015/thumb.jpg" width="240" height="240" alt="" loading="lazy">
-      <span class="txt"><span class="no">15번 · 사진 + 영상</span><span class="ttl">책상 위 나만의 피규어</span></span>
-      <span class="go" aria-hidden="true">›</span>
-    </a></li>
+    <li class="card">
+      <a class="open" href="p/001/">
+        <img src="p/001/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">1번 · 사진</span><span class="ttl">눈 오는 날, 눈사람과 찰칵</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/001/" data-title="눈 오는 날, 눈사람과 찰칵 | AI로사쌤 오늘의 프롬프트" data-label="1번만 공유">1번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/002/">
+        <img src="p/002/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">2번 · 사진 + 영상</span><span class="ttl">자작나무 숲 눈길 걷기</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/002/" data-title="자작나무 숲 눈길 걷기 | AI로사쌤 오늘의 프롬프트" data-label="2번만 공유">2번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/003/">
+        <img src="p/003/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">3번 · 사진 + 영상</span><span class="ttl">오로라 아래 유리 이글루</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/003/" data-title="오로라 아래 유리 이글루 | AI로사쌤 오늘의 프롬프트" data-label="3번만 공유">3번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/004/">
+        <img src="p/004/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">4번 · 사진 3종</span><span class="ttl">사진관 안 가고 프로필 사진 3종</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/004/" data-title="사진관 안 가고 프로필 사진 3종 | AI로사쌤 오늘의 프롬프트" data-label="4번만 공유">4번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/005/">
+        <img src="p/005/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">5번 · 사진 + 영상</span><span class="ttl">하늘에서 쏟아지는 제품 광고</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/005/" data-title="하늘에서 쏟아지는 제품 광고 | AI로사쌤 오늘의 프롬프트" data-label="5번만 공유">5번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/006/">
+        <img src="p/006/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">6번 · 사진 + 영상</span><span class="ttl">노을 속 스노보드 점프</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/006/" data-title="노을 속 스노보드 점프 | AI로사쌤 오늘의 프롬프트" data-label="6번만 공유">6번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/007/">
+        <img src="p/007/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">7번 · 사진 + 영상</span><span class="ttl">카파도키아 열기구 여행</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/007/" data-title="카파도키아 열기구 여행 | AI로사쌤 오늘의 프롬프트" data-label="7번만 공유">7번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/008/">
+        <img src="p/008/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">8번 · 사진 + 영상</span><span class="ttl">얼음을 깨고 나오는 제품 광고</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/008/" data-title="얼음을 깨고 나오는 제품 광고 | AI로사쌤 오늘의 프롬프트" data-label="8번만 공유">8번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/009/">
+        <img src="p/009/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">9번 · 사진 + 영상</span><span class="ttl">물속으로 풍덩, 제품 광고</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/009/" data-title="물속으로 풍덩, 제품 광고 | AI로사쌤 오늘의 프롬프트" data-label="9번만 공유">9번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/010/">
+        <img src="p/010/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">10번 · 사진 + 영상</span><span class="ttl">꽃이 피며 나타나는 제품 광고</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/010/" data-title="꽃이 피며 나타나는 제품 광고 | AI로사쌤 오늘의 프롬프트" data-label="10번만 공유">10번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/011/">
+        <img src="p/011/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">11번 · 사진 + 영상</span><span class="ttl">금빛 실크가 걷히는 제품 공개</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/011/" data-title="금빛 실크가 걷히는 제품 공개 | AI로사쌤 오늘의 프롬프트" data-label="11번만 공유">11번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/012/">
+        <img src="p/012/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">12번 · 사진 + 영상</span><span class="ttl">미니어처 마을의 거인 제품 광고</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/012/" data-title="미니어처 마을의 거인 제품 광고 | AI로사쌤 오늘의 프롬프트" data-label="12번만 공유">12번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/013/">
+        <img src="p/013/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">13번 · 사진 + 영상</span><span class="ttl">원료가 소용돌이치는 제품 광고</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/013/" data-title="원료가 소용돌이치는 제품 광고 | AI로사쌤 오늘의 프롬프트" data-label="13번만 공유">13번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/014/">
+        <img src="p/014/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">14번 · 사진 + 영상</span><span class="ttl">색종이 펑! 축하 파티</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/014/" data-title="색종이 펑! 축하 파티 | AI로사쌤 오늘의 프롬프트" data-label="14번만 공유">14번만 공유</button>
+    </li>
+    <li class="card">
+      <a class="open" href="p/015/">
+        <img src="p/015/thumb.jpg" width="240" height="240" alt="" loading="lazy">
+        <span class="txt"><span class="no">15번 · 사진 + 영상</span><span class="ttl">책상 위 나만의 피규어</span></span>
+      </a>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/015/" data-title="책상 위 나만의 피규어 | AI로사쌤 오늘의 프롬프트" data-label="15번만 공유">15번만 공유</button>
+    </li>
   </ul>
   <p class="how" style="text-align:center;font-size:14px">출처 · AI로사쌤</p>
 </main>
+<script>
+(function(){
+  var msg=document.getElementById('msg');
+  function copied(btn){
+    var label=btn.getAttribute('data-label');
+    btn.textContent='링크가 복사됐어요';
+    msg.textContent='카카오톡 등 대화창에 붙여넣기 하세요.';
+    setTimeout(function(){btn.textContent=label},2500);
+  }
+  function manual(url){msg.textContent='이 주소를 길게 눌러 복사하세요: '+url}
+  function copy(btn,url){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){copied(btn)}).catch(function(){manual(url)});
+    }else{
+      try{
+        var t=document.createElement('textarea');t.value=url;t.setAttribute('readonly','');
+        t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();
+        var ok=document.execCommand('copy');document.body.removeChild(t);
+        if(ok){copied(btn)}else{manual(url)}
+      }catch(e){manual(url)}
+    }
+  }
+  function share(btn){
+    var url=btn.getAttribute('data-url'),title=btn.getAttribute('data-title');
+    if(navigator.share){
+      navigator.share({title:title,url:url}).catch(function(e){
+        if(e&&e.name==='AbortError'){return}
+        copy(btn,url);
+      });
+    }else{copy(btn,url)}
+  }
+  var bs=document.querySelectorAll('button[data-url]');
+  for(var i=0;i<bs.length;i++){bs[i].addEventListener('click',function(){share(this)})}
+})();
+</script>
 </body>
 </html>
