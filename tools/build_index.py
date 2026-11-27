@@ -31,53 +31,8 @@ page = '''<!DOCTYPE html>
 <meta property="og:description" content="매일 하나씩 올리는 사진·영상 프롬프트를 한곳에서 골라 복사하세요.">
 <meta property="og:image" content="https://aigcoop.github.io/daily-prompt/p/%s/%s">
 <meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
-<style>
-/* 배치: 휴대폰 한 줄 세로 흐름 — 제목 → 주제 단추 목록(작은 사진 + 번호 + 제목) */
-:root{
-  --bg:#eef4f1;--card:#ffffff;--ink:#16302b;--soft:#5b716c;--line:#cfdcd7;
-  --accent:#0c7a66;--accent-ink:#ffffff;--mark:#ffe27a;
-  --display:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --body:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
-    --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
-  --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
-}
-*{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
-main{max-width:520px;margin:0 auto;padding:20px 16px 40px;display:flex;flex-direction:column;gap:16px}
-.day{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
-  border-bottom:2px solid var(--ink);padding-bottom:8px}
-.day b{font-family:var(--display);font-weight:400;font-size:20px}
-.day span{color:var(--soft);font-size:15px}
-h1{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.3;margin:0;text-wrap:balance}
-h1 em{font-style:normal;background:linear-gradient(transparent 58%%,var(--mark) 58%%)}
-.how{margin:0;color:var(--soft)}
-ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;
-  display:flex;align-items:center;gap:10px}
-.open{display:flex;align-items:center;gap:14px;flex:1;min-width:0;color:inherit;text-decoration:none;border-radius:10px}
-.open img{width:76px;height:76px;border-radius:10px;object-fit:cover;flex:none;display:block}
-.txt{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
-.no{color:var(--accent);font-size:14px}
-.ttl{font-family:var(--display);font-size:19px;line-height:1.35;word-break:keep-all}
-.share{flex:none;display:inline-flex;align-items:center;gap:5px;font-family:var(--body);font-size:13px;
-  line-height:1;padding:8px 11px;border-radius:999px;background:transparent;color:var(--soft);
-  border:1px solid var(--line);cursor:pointer;white-space:nowrap}
-.share:active{color:var(--accent);border-color:var(--accent)}
-.share.done{color:var(--accent);border-color:var(--accent)}
-.open:focus-visible,.share:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-#msg{margin:0;text-align:center;color:var(--accent);font-size:15px}
-#msg:empty{display:none}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=2">
 </head>
 <body>
 <main>
@@ -88,7 +43,7 @@ ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12p
   <ul>
 %s
   </ul>
-  <p class="how" style="text-align:center;font-size:14px">출처 · AI로사쌤</p>
+  <p class="credit">출처 · AI로사쌤</p>
 </main>
 <script>
 (function(){
