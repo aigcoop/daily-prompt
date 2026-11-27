@@ -85,6 +85,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;
   background:rgba(255,255,255,.92);color:#15191b}
 .tile .share:active,.tile .share.done{background:var(--accent);color:var(--accent-ink)}
+.tile.locked img{filter:brightness(.42) saturate(.6) blur(1.5px);transform:scale(1.04)}
+.tile.locked .open::after{display:none}
+.lock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;pointer-events:none}
 .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:5;margin:0;
   max-width:calc(100% - 40px);padding:10px 16px;border-radius:999px;background:var(--ink);color:var(--bg);
   font-size:13px;text-align:center}
