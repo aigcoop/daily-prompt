@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>얼음 깨는 제품 광고 프롬프트 | AI로사쌤</title>
+<meta property="og:title" content="얼음을 깨고 나오는 제품 광고 영상 | AI로사쌤 오늘의 프롬프트">
+<meta property="og:image" content="https://aigcoop.github.io/daily-prompt/p/008/photo.jpg">
+<meta property="og:type" content="website">
+<meta property="og:description" content="제품 사진 한 장으로 얼음 속 광고 사진과 10초 영상을 만드는 프롬프트 2개를 복사하세요.">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+/* 배치: 휴대폰 한 줄 세로 흐름 — 날짜 띠 → 사진 → 제목 → 프롬프트 상자 → 큰 복사 단추 */
+:root{
+  --bg:#eef4f1;
+  --card:#ffffff;
+  --ink:#16302b;
+  --soft:#5b716c;
+  --line:#cfdcd7;
+  --accent:#0c7a66;
+  --accent-ink:#ffffff;
+  --mark:#ffe27a;
+  --display:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
+    --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
+  --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
+main{max-width:520px;margin:0 auto;padding:20px 16px 40px;display:flex;flex-direction:column;gap:16px}
+.day{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding-bottom:8px}
+.day b{font-family:var(--display);font-weight:400;font-size:20px}
+.day span{color:var(--soft);font-size:15px}
+figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+figure svg,figure img,figure video{display:block;width:100%;height:auto;max-width:100%}
+figcaption{padding:8px 12px;color:var(--soft);font-size:14px}
+h1{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.3;margin:0;text-wrap:balance}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--mark) 58%)}
+.how{margin:0;color:var(--soft)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+  white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-size:16px}
+button{font-family:var(--display);font-size:21px;border:0;border-radius:14px;padding:16px;
+  background:var(--accent);color:var(--accent-ink);cursor:pointer;width:100%}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+button:active{transform:translateY(1px)}
+@media (prefers-reduced-motion: reduce){button:active{transform:none}}
+.msg{margin:0;min-height:1.6em;text-align:center;color:var(--accent);font-size:15px}
+h2{font-family:var(--display);font-weight:400;font-size:21px;margin:12px 0 0;padding-top:16px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<main>
+  <div class="day"><b>오늘의 프롬프트</b><span>AI로사쌤 · 8번</span></div>
+
+  <h1>얼음을 깨고 나오는 <em>제품 광고 영상</em></h1>
+  <p class="how">제품 사진 한 장으로 광고 사진을 만들고, 그 사진으로 영상까지 만드는 두 단계예요. 어떤 제품이든 쓸 수 있어요.</p>
+
+  <h2>1단계 · 광고 사진 만들기</h2>
+  <figure>
+    <img src="photo.jpg" width="768" height="1376" alt="어두운 남색 배경 앞, 커다란 얼음 블록 안에 건강기능식품 상자가 갇혀 있는 광고 사진">
+    <figcaption>AI로 만든 예시 사진이에요.</figcaption>
+  </figure>
+  <p class="how">제미나이나 챗GPT에 <b>내 제품 사진을 먼저 올리고</b>, 아래 프롬프트를 붙여넣으세요.</p>
+  <div class="box" id="p1">업로드한 이미지 속 제품을 사용한 실사 고급 광고 사진. 제품은 형태, 비율, 색상, 라벨 디자인, 인쇄된 글자를 바꾸지 말고 다시 디자인하지 말 것.
+장면: 제품 1개가 투명하고 커다란 얼음 블록 한가운데에 똑바로 선 채 갇혀 있음. 얼음 속에는 미세한 기포와 흰 결이 보이고 표면에는 하얀 서리와 물방울이 맺혀 있으며, 얼음 너머로 제품 라벨이 정면으로 또렷하게 비침. 얼음 블록은 물기가 얇게 깔린 검은 유광 바닥 위에 놓여 바닥에 반영이 생김. 주변에 작은 얼음 조각 몇 개와 차가운 냉기 안개.
+조명과 구도: 어두운 남색 배경, 뒤에서 얼음을 투과하는 푸른 역광과 제품을 밝히는 부드러운 정면광, 정면 눈높이의 클로즈업, 제품이 화면 중앙에 크게.
+고해상도 4K 실사, 얼음의 결과 기포·서리 결정·제품 라벨까지 선명하게, 사람과 손은 나오지 않음, 제품에 원래 있는 글자 외에는 글자·로고·워터마크 없음, 세로 9:16.</div>
+  <button type="button" data-copy="p1" data-label="사진 프롬프트 복사">사진 프롬프트 복사</button>
+  <p class="msg" id="m-p1" role="status" aria-live="polite"></p>
+
+  <h2>2단계 · 광고 영상 만들기</h2>
+  <figure>
+    <video src="video.mp4" poster="photo.jpg" controls playsinline preload="metadata" width="720" height="1280"></video>
+    <figcaption>AI로 만든 예시 영상이에요. 눌러서 재생해 보세요.</figcaption>
+  </figure>
+  <p class="how">1단계에서 만든 <b>사진을 영상 도구에 첫 장면으로 올리고</b>, 아래 프롬프트를 붙여넣으세요.</p>
+  <div class="box" id="p2">첫 프레임의 제품 형태, 색, 라벨, 인쇄된 글자를 끝까지 그대로 유지하고 일그러지거나 바뀌지 않게. 사람과 손은 나오지 않음.
+0~3초: 얼음 블록 주위로 냉기 안개가 천천히 흐르고 표면의 물방울이 한 줄기 흘러내림. 카메라는 아주 천천히 다가감.
+3~5초: 얼음 가운데에 가느다란 금이 쩍 하고 생기더니 사방으로 빠르게 번져 나감.
+5~7초: 얼음이 바깥쪽으로 터지듯 산산이 깨지고, 얼음 조각과 물방울이 슬로모션으로 사방에 흩어짐.
+7~10초: 깨진 얼음 사이에서 제품이 흠집 없이 우뚝 선 채 드러나고, 표면에 맺힌 물방울이 빛을 받아 반짝임. 카메라는 제품 앞에서 천천히 줌 인하며 라벨을 또렷하게 보여주고 마무리.
+소리: 낮게 깔리는 냉기 소리, 얼음에 금 가는 날카로운 소리, 깨지는 순간의 묵직한 파열음, 이어지는 맑은 여운. 사람 목소리 없음.
+4K 고해상도 실사 영상, 10초 원테이크, 얼음 파편의 움직임은 물리적으로 자연스럽게, 화면에 자막이나 새로운 글자·로고 없음.</div>
+  <button type="button" data-copy="p2" data-label="영상 프롬프트 복사">영상 프롬프트 복사</button>
+  <p class="msg" id="m-p2" role="status" aria-live="polite"></p>
+
+  <p class="how" style="text-align:center;font-size:14px">출처 · AI로사쌤</p>
+</main>
+<script>
+(function(){
+  function run(btn){
+    var box=document.getElementById(btn.getAttribute('data-copy')),
+        msg=document.getElementById('m-'+btn.getAttribute('data-copy')),
+        label=btn.getAttribute('data-label');
+    function done(){btn.textContent='복사됐어요';msg.textContent='이제 대화창에 붙여넣기 하세요.';
+      setTimeout(function(){btn.textContent=label},2500)}
+    function fallback(){
+      try{
+        var r=document.createRange();r.selectNodeContents(box);
+        var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+        if(document.execCommand('copy')){done()}
+        else{msg.textContent='글이 선택됐어요. 길게 눌러 복사를 눌러 주세요.'}
+      }catch(e){msg.textContent='프롬프트 글을 길게 눌러 복사해 주세요.'}
+    }
+    var t=box.textContent;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done).catch(fallback);
+    }else{fallback()}
+  }
+  var bs=document.querySelectorAll('button[data-copy]');
+  for(var i=0;i<bs.length;i++){bs[i].addEventListener('click',function(){run(this)})}
+})();
+</script>
+</body>
+</html>
