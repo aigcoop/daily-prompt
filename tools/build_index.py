@@ -27,23 +27,25 @@ page = '''<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>오늘의 프롬프트 모음 | AI로사쌤</title>
+<meta property="og:site_name" content="지쿱AI대학교 · 지쿱파트너스 교육용 프롬프트">
 <meta property="og:title" content="오늘의 프롬프트 모음 | AI로사쌤">
 <meta property="og:description" content="매일 하나씩 올리는 사진·영상 프롬프트를 한곳에서 골라 복사하세요.">
 <meta property="og:image" content="https://aigcoop.github.io/daily-prompt/p/%s/%s">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=3">
+<link rel="stylesheet" href="assets/style.css?v=4">
 </head>
 <body>
 <main>
   <div class="day"><b>오늘의 프롬프트</b><span>AI로사쌤 · 모음</span></div>
+  <p class="edu">지쿱AI대학교 · 지쿱파트너스 교육용 프롬프트</p>
   <h1>매일 하나씩, <em>프롬프트 모음</em></h1>
   <p class="how">주제를 누르면 예시와 프롬프트가 나와요. 지금 %d개가 있어요. 오른쪽 <b>공유</b>를 누르면 그 주제 하나만 보이는 링크가 공유돼요.</p>
   <p id="msg" role="status" aria-live="polite"></p>
   <ul>
 %s
   </ul>
-  <p class="credit">출처 · AI로사쌤</p>
+  <p class="credit">지쿱AI대학교 · 지쿱파트너스 교육용 프롬프트<br>출처 · AI로사쌤 · 무단 복제와 재배포를 금합니다</p>
 </main>
 <script>
 (function(){

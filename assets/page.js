@@ -27,7 +27,7 @@
       function(){p.msg.textContent='프롬프트 글을 길게 눌러 복사해 주세요.'});
   }
   function share(btn){
-    var p=parts(btn,'data-share'),text=p.box.textContent;
+    var p=parts(btn,'data-share'),text=p.box.textContent+'\n\n— 지쿱AI대학교 · 지쿱파트너스 교육용 프롬프트 (AI로사쌤)';
     function viaCopy(){
       copyText(text,p.box,
         function(){flash(btn,'복사됨');p.msg.textContent='프롬프트가 복사됐어요. 보낼 곳에 붙여넣기 하세요.'},

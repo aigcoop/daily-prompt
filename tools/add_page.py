@@ -4,17 +4,17 @@
       h1(강조 부분은 <em>), title, og, desc, alt, card"""
 import json, os, re, subprocess, sys
 from PIL import Image
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import watermark
 
 c = json.load(open(sys.argv[1], encoding='utf-8'))
 no = c['no']
 os.makedirs('p/' + no, exist_ok=True)
-subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', c['video'], '-c:v', 'libx264', '-crf', '26',
-                '-preset', 'slow', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '96k',
-                '-movflags', '+faststart', 'p/%s/video.mp4' % no], check=True)
+watermark.mark_video(c['video'], 'p/%s/video.mp4' % no)
 im = Image.open(c['image']).convert('RGB')
 im.thumbnail((1080, 1920))
-im.save('p/%s/photo.jpg' % no, quality=88, optimize=True)
-w, h = im.size
+im.save('p/%s/photo.jpg' % no, quality=92, optimize=True)
+w, h = watermark.mark_image('p/%s/photo.jpg' % no, 'p/%s/photo.jpg' % no)
 
 def esc(s):
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('"', '&quot;')
