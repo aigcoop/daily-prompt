@@ -17,9 +17,9 @@ for p in pages:
         <img src="p/%s/thumb.jpg" width="240" height="240" alt="" loading="lazy">
         <span class="txt"><span class="no">%d번 · %s</span><span class="ttl">%s</span></span>
       </a>
-      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/%s/" data-title="%s" data-label="%d번만 공유">%d번만 공유</button>
+      <button type="button" class="share" data-url="https://aigcoop.github.io/daily-prompt/p/%s/" data-title="%s" aria-label="%d번만 공유"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 15V4M8 8l4-4 4 4M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>공유</span></button>
     </li>''' % (p['no'], p['no'], int(p['no']), html.escape(p['kind']), html.escape(p['title']),
-               p['no'], html.escape(p['title'] + ' | AI로사쌤 오늘의 프롬프트', quote=True), int(p['no']), int(p['no'])))
+               p['no'], html.escape(p['title'] + ' | AI로사쌤 오늘의 프롬프트', quote=True), int(p['no'])))
 
 page = '''<!DOCTYPE html>
 <html lang="ko">
@@ -63,25 +63,27 @@ h1 em{font-style:normal;background:linear-gradient(transparent 58%%,var(--mark) 
 .how{margin:0;color:var(--soft)}
 ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;
-  display:flex;flex-direction:column;gap:10px}
-.open{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none;border-radius:10px}
+  display:flex;align-items:center;gap:10px}
+.open{display:flex;align-items:center;gap:14px;flex:1;min-width:0;color:inherit;text-decoration:none;border-radius:10px}
 .open img{width:76px;height:76px;border-radius:10px;object-fit:cover;flex:none;display:block}
 .txt{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
 .no{color:var(--accent);font-size:14px}
 .ttl{font-family:var(--display);font-size:19px;line-height:1.35;word-break:keep-all}
-button{font-family:var(--display);font-size:17px;border-radius:10px;padding:10px 12px;cursor:pointer;width:100%%}
-.share{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
-.all{background:var(--accent);color:var(--accent-ink);border:0;font-size:19px;padding:14px}
-.open:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-#msg{margin:0;min-height:1.6em;text-align:center;color:var(--accent);font-size:15px}
+.share{flex:none;display:inline-flex;align-items:center;gap:5px;font-family:var(--body);font-size:13px;
+  line-height:1;padding:8px 11px;border-radius:999px;background:transparent;color:var(--soft);
+  border:1px solid var(--line);cursor:pointer;white-space:nowrap}
+.share:active{color:var(--accent);border-color:var(--accent)}
+.share.done{color:var(--accent);border-color:var(--accent)}
+.open:focus-visible,.share:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#msg{margin:0;text-align:center;color:var(--accent);font-size:15px}
+#msg:empty{display:none}
 </style>
 </head>
 <body>
 <main>
   <div class="day"><b>오늘의 프롬프트</b><span>AI로사쌤 · 모음</span></div>
   <h1>매일 하나씩, <em>프롬프트 모음</em></h1>
-  <p class="how">주제를 누르면 예시와 프롬프트가 나와요. 지금 %d개가 있어요. <b>"○번만 공유"</b>를 누르면 그 주제 하나만 보이는 링크가 공유돼요.</p>
-  <button type="button" class="all" data-url="https://aigcoop.github.io/daily-prompt/" data-title="오늘의 프롬프트 모음 | AI로사쌤" data-label="모음 전체 공유">모음 전체 공유</button>
+  <p class="how">주제를 누르면 예시와 프롬프트가 나와요. 지금 %d개가 있어요. 오른쪽 <b>공유</b>를 누르면 그 주제 하나만 보이는 링크가 공유돼요.</p>
   <p id="msg" role="status" aria-live="polite"></p>
   <ul>
 %s
@@ -92,10 +94,10 @@ button{font-family:var(--display);font-size:17px;border-radius:10px;padding:10px
 (function(){
   var msg=document.getElementById('msg');
   function copied(btn){
-    var label=btn.getAttribute('data-label');
-    btn.textContent='링크가 복사됐어요';
-    msg.textContent='카카오톡 등 대화창에 붙여넣기 하세요.';
-    setTimeout(function(){btn.textContent=label},2500);
+    var t=btn.querySelector('span');
+    t.textContent='복사됨';btn.classList.add('done');
+    msg.textContent='링크가 복사됐어요. 카카오톡 등 대화창에 붙여넣기 하세요.';
+    setTimeout(function(){t.textContent='공유';btn.classList.remove('done')},2500);
   }
   function manual(url){msg.textContent='이 주소를 길게 눌러 복사하세요: '+url}
   function copy(btn,url){
