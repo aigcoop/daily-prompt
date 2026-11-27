@@ -55,11 +55,14 @@ figcaption{display:flex;justify-content:space-between;align-items:center;gap:10p
 
 .box{background:var(--panel);border-radius:14px;padding:18px;font-size:14.5px;line-height:1.75;
   white-space:pre-wrap;overflow-wrap:anywhere}
-button[data-copy]{font-family:var(--body);font-weight:600;font-size:15.5px;letter-spacing:.01em;
-  border:0;border-radius:12px;padding:14px 16px;background:var(--ink);color:var(--bg);
-  cursor:pointer;width:100%}
-button[data-copy]:active{opacity:.85}
-.msg,#msg{margin:0;text-align:center;color:var(--accent);font-size:13px}
+.acts{display:flex;justify-content:flex-end;gap:8px;margin-top:-6px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-weight:500;font-size:13px;
+  line-height:1;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;
+  color:var(--ink);cursor:pointer;white-space:nowrap}
+.pill.main{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.pill:active{opacity:.8}
+.pill.done{border-color:var(--accent);color:var(--accent);background:transparent}
+.msg,#msg{margin:0;text-align:right;color:var(--accent);font-size:13px}
 .msg:empty,#msg:empty{display:none}
 .credit{margin:14px 0 0;text-align:center;color:var(--soft);font-size:12px;letter-spacing:.12em}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}

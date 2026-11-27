@@ -32,7 +32,7 @@ page = '''<!DOCTYPE html>
 <meta property="og:image" content="https://aigcoop.github.io/daily-prompt/p/%s/%s">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=2">
+<link rel="stylesheet" href="assets/style.css?v=3">
 </head>
 <body>
 <main>
