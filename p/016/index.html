@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도심 속 거인 프롬프트 | AI로사쌤</title>
+<meta property="og:title" content="빌딩보다 큰 거인이 된 나, 사진에서 영상까지 | AI로사쌤 오늘의 프롬프트">
+<meta property="og:image" content="https://aigcoop.github.io/daily-prompt/p/016/photo.jpg">
+<meta property="og:type" content="website">
+<meta property="og:description" content="내 사진으로 도심 속 거인 사진과 10초 영상을 만드는 프롬프트 2개를 복사하세요.">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+/* 배치: 휴대폰 한 줄 세로 흐름 — 날짜 띠 → 사진 → 제목 → 프롬프트 상자 → 큰 복사 단추 */
+:root{
+  --bg:#eef4f1;
+  --card:#ffffff;
+  --ink:#16302b;
+  --soft:#5b716c;
+  --line:#cfdcd7;
+  --accent:#0c7a66;
+  --accent-ink:#ffffff;
+  --mark:#ffe27a;
+  --display:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
+    --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101b19;--card:#182724;--ink:#e6f1ee;--soft:#9db3ad;--line:#2c403b;
+  --accent:#3fc4a8;--accent-ink:#06211c;--mark:#6b5a12;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
+main{max-width:520px;margin:0 auto;padding:20px 16px 40px;display:flex;flex-direction:column;gap:16px}
+.day{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding-bottom:8px}
+.day b{font-family:var(--display);font-weight:400;font-size:20px}
+.day span{color:var(--soft);font-size:15px}
+figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+figure svg,figure img,figure video{display:block;width:100%;height:auto;max-width:100%}
+figcaption{padding:8px 12px;color:var(--soft);font-size:14px}
+h1{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.3;margin:0;text-wrap:balance}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--mark) 58%)}
+.how{margin:0;color:var(--soft)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+  white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-size:16px}
+button{font-family:var(--display);font-size:21px;border:0;border-radius:14px;padding:16px;
+  background:var(--accent);color:var(--accent-ink);cursor:pointer;width:100%}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+button:active{transform:translateY(1px)}
+@media (prefers-reduced-motion: reduce){button:active{transform:none}}
+.msg{margin:0;min-height:1.6em;text-align:center;color:var(--accent);font-size:15px}
+h2{font-family:var(--display);font-weight:400;font-size:21px;margin:12px 0 0;padding-top:16px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<main>
+  <div class="day"><b>오늘의 프롬프트</b><span>AI로사쌤 · 16번</span></div>
+
+  <h1>빌딩보다 큰 거인이 된 나, <em>사진에서 영상까지</em></h1>
+  <p class="how">먼저 사진을 만들고, 그 사진으로 영상을 만드는 두 단계예요. 남녀 누구나 쓸 수 있어요.</p>
+
+  <h2>1단계 · 사진 만들기</h2>
+  <figure>
+    <img src="photo.jpg" width="768" height="1376" alt="고층 빌딩 사이에 거인처럼 앉아 한 손으로 턱을 괴고 웃는 인물의 합성 사진, 아래로 작은 도로와 강">
+    <figcaption>AI로 만든 예시 사진이에요.</figcaption>
+  </figure>
+  <p class="how">제미나이나 챗GPT에 <b>본인 사진을 먼저 올리고</b>, 아래 프롬프트를 붙여넣으세요.</p>
+  <div class="box" id="p1">업로드한 사진 속 인물을 주인공으로 한 실사 합성 사진. 얼굴을 그대로 반영하고 이목구비, 얼굴형, 헤어스타일, 안경을 바꾸지 말 것. 여성이면 여성, 남성이면 남성으로 표현. 화사하게 미소 짓는 밝은 얼굴.
+옷은 편안한 아이보리 니트와 청바지.
+장면: 인물이 고층 빌딩보다 훨씬 큰 거인이 되어 도심 한가운데 빌딩들 사이에 편안히 앉아 있는 모습. 무릎 높이에 고층 빌딩 옥상이 오고, 한 손으로 턱을 괴고 다른 손 손가락으로 빌딩 옥상을 살짝 짚은 채 카메라를 향해 웃고 있음. 아래 도로에는 장난감처럼 작은 자동차와 가로수, 다리와 강. 머리 주변으로 구름이 걸려 있음.
+구도: 드론이 얼굴 높이에서 찍은 듯한 구도로 얼굴과 상반신이 화면에 크게 보이고 아래로 도시가 펼쳐지게. 해 질 녘 황금빛 햇살이 얼굴과 빌딩 유리를 따뜻하게 비춤.
+고해상도 4K 실사, 피부결과 머리카락, 빌딩 창문까지 선명하게, 자연스러운 손가락, 이미지 안에 글자·간판·로고·워터마크 없음, 세로 9:16.</div>
+  <button type="button" data-copy="p1" data-label="사진 프롬프트 복사">사진 프롬프트 복사</button>
+  <p class="msg" id="m-p1" role="status" aria-live="polite"></p>
+
+  <h2>2단계 · 영상 만들기</h2>
+  <figure>
+    <video src="video.mp4" poster="photo.jpg" controls playsinline preload="metadata" width="720" height="1280"></video>
+    <figcaption>AI로 만든 예시 영상이에요. 눌러서 재생해 보세요.</figcaption>
+  </figure>
+  <p class="how">1단계에서 만든 <b>사진을 영상 도구에 첫 장면으로 올리고</b>, 아래 프롬프트를 붙여넣으세요.</p>
+  <div class="box" id="p2">첫 프레임 이미지 속 인물의 얼굴, 헤어스타일, 안경, 의상을 끝까지 그대로 유지. 인물은 계속 빌딩보다 큰 거인 크기를 유지.
+0~3초: 아래 도로에서 작은 자동차들이 움직이고 구름이 인물의 어깨 옆을 천천히 흘러감. 인물이 도시를 내려다보며 미소 지음.
+3~6초: 인물이 손가락으로 구름 한 조각을 살짝 건드려 흩어지게 하고, 지나가는 작은 헬리콥터를 신기한 듯 눈으로 따라감.
+6~10초: 카메라를 보며 손을 천천히 흔들고 한국어로 말한다: &quot;오늘은 제가 이 도시에서 제일 커요.&quot;
+카메라는 얼굴 높이에서 인물 주위를 아주 천천히 도는 드론 샷. 소리는 멀리서 들리는 도시 소음과 바람, 웅장하고 경쾌한 음악. 거인의 움직임은 크기에 맞게 느리고 묵직하게.
+4K 고해상도 실사 영상, 10초 원테이크, 얼굴과 손 변형 없음, 대사는 입 모양에 맞춰 자연스럽게, 화면에 자막·글자·로고 없음.</div>
+  <button type="button" data-copy="p2" data-label="영상 프롬프트 복사">영상 프롬프트 복사</button>
+  <p class="msg" id="m-p2" role="status" aria-live="polite"></p>
+
+  <p class="how" style="text-align:center;font-size:14px">출처 · AI로사쌤</p>
+</main>
+<script>
+(function(){
+  function run(btn){
+    var box=document.getElementById(btn.getAttribute('data-copy')),
+        msg=document.getElementById('m-'+btn.getAttribute('data-copy')),
+        label=btn.getAttribute('data-label');
+    function done(){btn.textContent='복사됐어요';msg.textContent='이제 대화창에 붙여넣기 하세요.';
+      setTimeout(function(){btn.textContent=label},2500)}
+    function fallback(){
+      try{
+        var r=document.createRange();r.selectNodeContents(box);
+        var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+        if(document.execCommand('copy')){done()}
+        else{msg.textContent='글이 선택됐어요. 길게 눌러 복사를 눌러 주세요.'}
+      }catch(e){msg.textContent='프롬프트 글을 길게 눌러 복사해 주세요.'}
+    }
+    var t=box.textContent;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done).catch(fallback);
+    }else{fallback()}
+  }
+  var bs=document.querySelectorAll('button[data-copy]');
+  for(var i=0;i<bs.length;i++){bs[i].addEventListener('click',function(){run(this)})}
+})();
+</script>
+</body>
+</html>
